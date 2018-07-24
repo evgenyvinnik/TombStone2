@@ -1,16 +1,16 @@
-﻿using ServiceHelpers;
+﻿
 using System;
 using System.IO;
 using System.Linq;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 
-namespace App1
+namespace CognitiveService
 {
     class PickImage
     {
         // Call this function to pick the image
-        private async void LoadImagesFromFileClicked()
+        public static async void LoadImagesFromFileClicked()
         {
             try
             {
@@ -34,7 +34,7 @@ namespace App1
         }
 
         // Modify this function to send your results to where ever you need
-        async private void UpdateResults(ImageAnalyzer img)
+        public static async void UpdateResults(ImageAnalyzer img)
         {
             await img.DescribeAsync();
             if (img.AnalysisResult.Description == null || !img.AnalysisResult.Description.Captions.Any(d => d.Confidence >= 0.2))
