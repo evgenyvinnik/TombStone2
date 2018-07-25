@@ -3,13 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using Tweetinvi;
 using Tweetinvi.Models;
 using Tweetinvi.Parameters;
 using Windows.Storage;
-using Windows.Storage.Pickers;
 
 namespace TombStone2.Helpers
 {

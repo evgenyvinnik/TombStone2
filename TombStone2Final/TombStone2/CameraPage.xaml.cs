@@ -4,16 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TombStone2.Helpers;
-using Windows.ApplicationModel;
 using Windows.Devices.Enumeration;
 using Windows.Foundation;
-using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
 using Windows.Media;
 using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
-using Windows.Phone.UI.Input;
 using Windows.Storage;
 using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
@@ -24,13 +21,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace TombStone2
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class CameraPage : Page
     {
         // Rotation metadata to apply to the preview stream and recorded videos (MF_MT_VIDEO_ROTATION)
@@ -63,7 +55,7 @@ namespace TombStone2
         // Rotation Helper to simplify handling rotation compensation for the camera streams
         private CameraRotationHelper _rotationHelper;
 
-        int counter = 2;
+        int counter = 5;
         int counterClick = 0;
 
         DispatcherTimer dispatcherTimer;
