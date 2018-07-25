@@ -8,9 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Name="GridPad" PointerMoved="GridPad_PointerMoved">
         <MediaElement Name="HighFiveVideo" Source="ms-appx:///Videos/highfive.mp4" AutoPlay="True"
-                        AreTransportControlsEnabled="False" IsFullWindow="True"
-                          MediaEnded="HighFiveVideo_MediaEnded" />
+                        AreTransportControlsEnabled="False" 
+                        MediaEnded="HighFiveVideo_MediaEnded" />
+        <Grid />
     </Grid>
 </Page>
