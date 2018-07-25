@@ -109,6 +109,11 @@
     <None Include="GridViewTest_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\Instagram\1.jpg" />
+    <Content Include="images\Instagram\2.jpg" />
+    <Content Include="images\Instagram\3.jpg" />
+    <Content Include="images\Instagram\4.jpg" />
+    <Content Include="images\Instagram\5.jpg" />
     <Content Include="images\LandscapeImage1.jpg" />
     <Content Include="images\LandscapeImage10.jpg" />
     <Content Include="images\LandscapeImage11.jpg" />
@@ -158,6 +163,7 @@
       <Version>6.1.5</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
