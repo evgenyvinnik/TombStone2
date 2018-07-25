@@ -11,8 +11,18 @@ namespace GridViewTest
     /// </summary>
     public class ControlInfoDataItem
     {
+        private static int randSeed = 0;
         public ControlInfoDataItem(string title, string subtitle, string imagePath, string description = "", string content = "", bool isNew = false)
         {
+            if (randSeed == 0)
+            {
+                randSeed = DateTime.Now.Millisecond;
+            }
+            else
+            {
+                randSeed += 1;
+            }
+            SortOrder = new Random(randSeed).Next();
             UniqueId = Guid.NewGuid().ToString();
             Title = title;
             Subtitle = subtitle;
@@ -24,6 +34,7 @@ namespace GridViewTest
             //this.RelatedControls = new ObservableCollection<string>();
         }
 
+        public int SortOrder { get; private set; }
         public string UniqueId { get; private set; }
         public string Title { get; private set; }
         public string Subtitle { get; private set; }
