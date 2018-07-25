@@ -114,7 +114,7 @@ namespace TombStone2
                 dispatcherTimer.Stop();
                 await TakePhotoAsync();
 
-                this.Frame.Navigate(typeof(ThanksPage));
+                this.Frame.Navigate(typeof(TwitterPage));
             }
             else
             {

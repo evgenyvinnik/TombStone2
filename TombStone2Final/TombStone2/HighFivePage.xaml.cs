@@ -17,7 +17,7 @@ namespace TombStone2
     public sealed partial class HighFivePage : Page
     {
         int timesEnded = 1;
-        int timesToEnd = 2;
+        int timesToEnd = 1;
 
         int intPointerCountUpdater = 0;
         int intPointerCountUpdaterFrequency = 20;
@@ -115,7 +115,7 @@ namespace TombStone2
 
             if (timesEnded > timesToEnd)
             {
-                this.Frame.Navigate(typeof(CameraPage));
+                this.Frame.Navigate(typeof(InstagramPage));
             }
             else
             {
