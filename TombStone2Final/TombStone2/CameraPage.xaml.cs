@@ -63,7 +63,7 @@ namespace TombStone2
         // Rotation Helper to simplify handling rotation compensation for the camera streams
         private CameraRotationHelper _rotationHelper;
 
-        int counter = 5;
+        int counter = 2;
         int counterClick = 0;
 
         DispatcherTimer dispatcherTimer;
@@ -121,6 +121,7 @@ namespace TombStone2
 
                 dispatcherTimer.Stop();
                 await TakePhotoAsync();
+
                 this.Frame.Navigate(typeof(ThanksPage));
             }
             else
@@ -345,6 +346,9 @@ namespace TombStone2
                 var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());
 
                 await ReencodeAndSavePhotoAsync(stream, file, photoOrientation);
+
+                PickImage.LoadImagesFromFileClicked(file);
+
                 Debug.WriteLine("Photo saved!");
             }
             catch (Exception ex)

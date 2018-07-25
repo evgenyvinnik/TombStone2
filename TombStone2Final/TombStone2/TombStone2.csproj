@@ -102,6 +102,10 @@
       <DependentUpon>HelloPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CameraRotationHelper.cs" />
+    <Compile Include="Helpers\Globals.cs" />
+    <Compile Include="Helpers\ImageAnalyzer.cs" />
+    <Compile Include="Helpers\PickImage.cs" />
+    <Compile Include="Helpers\VisionHelper.cs" />
     <Compile Include="HighFivePage.xaml.cs">
       <DependentUpon>HighFivePage.xaml</DependentUpon>
     </Compile>
@@ -162,6 +166,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ProjectOxford.Vision">
+      <Version>1.0.393</Version>
+    </PackageReference>
+    <PackageReference Include="TweetinviAPI">
+      <Version>3.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

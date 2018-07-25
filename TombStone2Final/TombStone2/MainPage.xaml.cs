@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Tweetinvi;
+using Tweetinvi.Models;
+using Tweetinvi.Parameters;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -43,7 +47,7 @@ namespace TombStone2
         void dispatcherTimer_Tick(object sender, object e)
         {
             dispatcherTimer.Stop();
-            this.Frame.Navigate(typeof(HelloPage));
+            //this.Frame.Navigate(typeof(HelloPage));
             //this.Frame.Navigate(typeof(HighFivePage));
             this.Frame.Navigate(typeof(CameraPage));
         }
