@@ -63,7 +63,11 @@ namespace TombStone2
         // Rotation Helper to simplify handling rotation compensation for the camera streams
         private CameraRotationHelper _rotationHelper;
 
-        #region Constructor, lifecycle and navigation
+        int counter = 5;
+        int counterClick = 0;
+
+        DispatcherTimer dispatcherTimer;
+        int timeoutSec = 1;
 
         public CameraPage()
         {
@@ -73,57 +77,56 @@ namespace TombStone2
             NavigationCacheMode = NavigationCacheMode.Disabled;
         }
 
-        private void Application_Suspending(object sender, SuspendingEventArgs e)
-        {
-            _isSuspending = false;
-
-            var deferral = e.SuspendingOperation.GetDeferral();
-            var task = Dispatcher.RunAsync(CoreDispatcherPriority.High, async () =>
-            {
-                await SetUpBasedOnStateAsync();
-                deferral.Complete();
-            });
-        }
-
-        private void Application_Resuming(object sender, object o)
-        {
-            _isSuspending = false;
-
-            var task = Dispatcher.RunAsync(CoreDispatcherPriority.High, async () =>
-            {
-                await SetUpBasedOnStateAsync();
-            });
-        }
-
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             // Useful to know when to initialize/clean up the camera
-            Application.Current.Suspending += Application_Suspending;
-            Application.Current.Resuming += Application_Resuming;
             Window.Current.VisibilityChanged += Window_VisibilityChanged;
 
             _isActivePage = true;
             await SetUpBasedOnStateAsync();
+
+            DispatcherTimerSetup();
         }
 
         protected override async void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             // Handling of this event is included for completenes, as it will only fire when navigating between pages and this sample only includes one page
-            Application.Current.Suspending -= Application_Suspending;
-            Application.Current.Resuming -= Application_Resuming;
             Window.Current.VisibilityChanged -= Window_VisibilityChanged;
 
             _isActivePage = false;
             await SetUpBasedOnStateAsync();
         }
 
-        #endregion Constructor, lifecycle and navigation
 
 
-        #region Event handlers
         private async void Window_VisibilityChanged(object sender, VisibilityChangedEventArgs args)
         {
             await SetUpBasedOnStateAsync();
+        }
+
+
+        public void DispatcherTimerSetup()
+        {
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, timeoutSec);
+            dispatcherTimer.Start();
+        }
+
+        async void dispatcherTimer_Tick(object sender, object e)
+        {
+            counter--;
+            if (counter <= counterClick)
+            {
+
+                dispatcherTimer.Stop();
+                await TakePhotoAsync();
+                this.Frame.Navigate(typeof(ThanksPage));
+            }
+            else
+            {
+                CameraCounter.Text = counter.ToString();
+            }
         }
 
         /// <summary>
@@ -153,11 +156,6 @@ namespace TombStone2
             });
         }
 
-        private async void PhotoButton_Click(object sender, RoutedEventArgs e)
-        {
-            await TakePhotoAsync();
-        }
-
         private async void MediaCapture_RecordLimitationExceeded(MediaCapture sender)
         {
             // This is a notification that recording has to stop, and the app is expected to finalize the recording
@@ -173,11 +171,6 @@ namespace TombStone2
 
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => UpdateCaptureControls());
         }
-
-        #endregion Event handlers
-
-
-        #region MediaCapture methods
 
         /// <summary>
         /// Initializes the MediaCapture, registers events, gets camera device information for mirroring and rotating, starts preview and unlocks the UI
@@ -270,7 +263,7 @@ namespace TombStone2
             var transform = new RotateTransform { Angle = angle };
 
             // The RenderTransform is safe to use (i.e. it won't cause layout issues) in this case, because these buttons have a 1:1 aspect ratio
-            PhotoButton.RenderTransform = transform;
+            CameraCounter.RenderTransform = transform;
         }
 
         /// <summary>
@@ -397,11 +390,6 @@ namespace TombStone2
             }
         }
 
-        #endregion MediaCapture methods
-
-
-        #region Helper functions
-
         /// <summary>
         /// Initialize or clean up the camera and our UI,
         /// depending on the page state.
@@ -477,7 +465,6 @@ namespace TombStone2
         private void UpdateCaptureControls()
         {
             // The buttons should only be enabled if the preview started sucessfully
-            PhotoButton.IsEnabled = _isPreviewing;
         }
 
         /// <summary>
@@ -537,8 +524,6 @@ namespace TombStone2
                 }
             }
         }
-
-        #endregion Helper functions
 
     }
 }
