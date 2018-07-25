@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="GridViewTest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GridViewTest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="ImageOverlayTemplate" x:DataType="local:ControlInfoDataItem">
+            <Grid Width="200" Height="200" Margin="4,4,4,8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Style="{StaticResource BaseTextBlockStyle}"
+                    Width="186"
+                    Margin="8,4"
+                    HorizontalAlignment="Center"
+                    Text="{x:Bind Title}" />
+                <TextBlock
+                     Grid.Row="1"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Width="186"
+                    Margin="8,4"
+                    HorizontalAlignment="Center"
+                    Text="{x:Bind Subtitle}" />
+                <Image
+                    Grid.Row="2"
+                    Margin="8,0,8,8"
+                    VerticalAlignment="Center"
+                    Source="{x:Bind ImagePath}" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <GridView x:Name="InstagramPhotos"
+                  CanDragItems="False"
+                  IsSwipeEnabled="False"
+                  IsItemClickEnabled="False"
+                    ItemTemplate="{StaticResource ImageOverlayTemplate}"
+                  SelectionMode="None"
+                    />
+    </Grid>
+</Page>
