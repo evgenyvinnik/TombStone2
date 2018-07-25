@@ -45,6 +45,9 @@ namespace UniversalTouchScreen
 
             var blnIsMouse = e.Pointer.PointerDeviceType == PointerDeviceType.Mouse;
 
+            if (blnIsMouse)
+                return;
+
             //Pointer saved in reversed mode ...
             for (int i = intPointerCount - 1; i >= 0; i--)
             {
