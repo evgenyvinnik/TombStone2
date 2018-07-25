@@ -133,6 +133,7 @@
   <ItemGroup>
     <Content Include="Assets\splash_main.png" />
     <Content Include="Instagrams\1.jpg" />
+    <Content Include="Instagrams\10.jpg" />
     <Content Include="Instagrams\2.jpg" />
     <Content Include="Instagrams\3.jpg" />
     <Content Include="Instagrams\4.jpg" />
