@@ -11,15 +11,15 @@ namespace GridViewTest
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(String uniqueId, String title, String subtitle, String imagePath, String description, String content, bool isNew)
+        public ControlInfoDataItem(string title, string subtitle, string imagePath, string description = "", string content = "", bool isNew = false)
         {
-            this.UniqueId = uniqueId;
-            this.Title = title;
-            this.Subtitle = subtitle;
-            this.Description = description;
-            this.ImagePath = imagePath;
-            this.Content = content;
-            this.IsNew = isNew;
+            UniqueId = Guid.NewGuid().ToString();
+            Title = title;
+            Subtitle = subtitle;
+            Description = description;
+            ImagePath = imagePath;
+            Content = content;
+            IsNew = isNew;
             //this.Docs = new ObservableCollection<ControlInfoDocLink>();
             //this.RelatedControls = new ObservableCollection<string>();
         }
@@ -36,7 +36,7 @@ namespace GridViewTest
 
         public override string ToString()
         {
-            return this.Title;
+            return Title;
         }
     }
 
@@ -44,8 +44,8 @@ namespace GridViewTest
     {
         public ControlInfoDocLink(string title, string uri)
         {
-            this.Title = title;
-            this.Uri = uri;
+            Title = title;
+            Uri = uri;
         }
         public string Title { get; private set; }
         public string Uri { get; private set; }
