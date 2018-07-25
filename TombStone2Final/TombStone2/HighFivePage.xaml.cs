@@ -24,6 +24,9 @@ namespace TombStone2
         int timesEnded = 1;
         int timesToEnd = 2;
 
+        int intPointerCountUpdater = 0;
+        int intPointerCountUpdaterFrequency = 20;
+
         public HighFivePage()
         {
             this.InitializeComponent();
@@ -44,6 +47,16 @@ namespace TombStone2
 
             if (blnIsMouse)
                 return;
+
+            if (intPointerCountUpdater % intPointerCountUpdaterFrequency == 0)
+            {
+                PointsCountTextBlock.Text = intPointerCount.ToString();
+                intPointerCountUpdater = 0;
+            }
+            else
+            {
+                intPointerCountUpdater++;
+            }
 
             //Pointer saved in reversed mode ...
             for (int i = intPointerCount - 1; i >= 0; i--)
