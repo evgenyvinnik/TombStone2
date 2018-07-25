@@ -25,6 +25,7 @@ namespace TombStone2
         public MainPage()
         {
             this.InitializeComponent();
+            TestAppDataTextBox.Text = Config.Get.Data.Password;
         }
     }
 }
