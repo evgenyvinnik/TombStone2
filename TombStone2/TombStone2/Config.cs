@@ -19,7 +19,7 @@ namespace TombStone2
 
         private Config()
         {
-            var json = Task.Run( () => File.ReadAllText("c:\\temp\\config.json")).Result;
+            var json = Task.Run( () => File.ReadAllText($"{Windows.ApplicationModel.Package.Current.InstalledLocation.Path}\\Assets\\config.json")).Result;
             Data = JsonConvert.DeserializeObject<ConfigData>(json);
         }
 
