@@ -12,6 +12,7 @@
         <MediaElement Name="HighFiveVideo" Source="ms-appx:///Videos/highfive.mp4" AutoPlay="True"
                         AreTransportControlsEnabled="False" 
                         MediaEnded="HighFiveVideo_MediaEnded" />
+            <TextBlock Name="PointsCountTextBlock" Text="0" FontSize="60" Foreground="White" />
         <Grid />
     </Grid>
 </Page>
