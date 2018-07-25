@@ -95,9 +95,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CameraPage.xaml.cs">
+      <DependentUpon>CameraPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HelloPage.xaml.cs">
       <DependentUpon>HelloPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CameraRotationHelper.cs" />
     <Compile Include="HighFivePage.xaml.cs">
       <DependentUpon>HighFivePage.xaml</DependentUpon>
     </Compile>
@@ -134,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CameraPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HelloPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

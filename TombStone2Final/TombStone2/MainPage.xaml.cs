@@ -23,7 +23,7 @@ namespace TombStone2
     public sealed partial class MainPage : Page
     {
         DispatcherTimer dispatcherTimer;
-        int timeoutSec = 3;
+        int timeoutSec = 1;
 
         public MainPage()
         {
@@ -45,6 +45,7 @@ namespace TombStone2
             dispatcherTimer.Stop();
             this.Frame.Navigate(typeof(HelloPage));
             //this.Frame.Navigate(typeof(HighFivePage));
+            this.Frame.Navigate(typeof(CameraPage));
         }
     }
 }
